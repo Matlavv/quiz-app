@@ -1,3 +1,4 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
@@ -137,12 +138,13 @@ const Quiz = () => {
           </Text>
         </View>
       </View>
-      <View className="-mt-4 bg-white rounded-3xl">
+      <View className="">
         <View className="mt-10">
           {answers.map((answer, idx) => (
             <TouchableOpacity
               key={idx}
               onPress={() => handleAnswer(answer)}
+              className="flex-row items-center bg-blue-500 rounded-xl p-4 m-2"
               style={{
                 backgroundColor:
                   selectedAnswer === answer
@@ -151,9 +153,21 @@ const Quiz = () => {
                       : "red"
                     : "#B8C0FF",
               }}
-              className="rounded-xl p-4 m-2"
             >
-              <Text className="text-white font-semibold">{answer}</Text>
+              <Text className="flex-1 text-white font-semibold">{answer}</Text>
+              {selectedAnswer && (
+                <MaterialIcons
+                  name={
+                    answer === currentQuestion.correct_answer
+                      ? "check"
+                      : selectedAnswer === answer
+                      ? "close"
+                      : null
+                  }
+                  size={24}
+                  color="white"
+                />
+              )}
             </TouchableOpacity>
           ))}
         </View>
