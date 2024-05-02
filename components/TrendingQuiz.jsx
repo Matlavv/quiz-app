@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { penguin } from "../assets";
 
 const TrendingQuiz = () => {
   const navigation = useNavigation();
@@ -15,13 +16,14 @@ const TrendingQuiz = () => {
 
   return (
     <View>
-      <Text className="text-xl font-bold m-4">Trending Quiz</Text>
+      <Text className="text-xl font-bold m-4">Quiz populaires</Text>
       <View className="flex flex-row justify-between m-4">
         <TouchableOpacity
           className="rounded-xl bg-primary-purple h-24"
           onPress={() => navigateToQuiz(27)} // ID de la catégorie pour Animaux
         >
           <Text className="text-lg font-bold m-4">Animaux</Text>
+          <Image source={penguin} className="w-12 h-12" />
         </TouchableOpacity>
         <TouchableOpacity
           className="rounded-xl bg-secondary-purple"
