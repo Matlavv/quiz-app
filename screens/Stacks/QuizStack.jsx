@@ -1,7 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AnimalsQuiz from "../Quiz/AnimalsQuiz";
-import CelebritiesQuiz from "../Quiz/CelebritiesQuiz";
-import CultureQuiz from "../Quiz/CultureQuiz";
+import Quiz from "../Quiz/Quiz";
 import QuizScreen from "../Quiz/QuizScreen";
 import RandomQuiz from "../Quiz/RandomQuiz";
 
@@ -21,18 +19,8 @@ const HomeStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="animalsQuiz"
-        component={AnimalsQuiz}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="celebritiesQuiz"
-        component={CelebritiesQuiz}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="cultureQuiz"
-        component={CultureQuiz}
+        name="quizCategory"
+        component={Quiz}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
