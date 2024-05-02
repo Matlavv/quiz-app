@@ -18,9 +18,15 @@ const Quiz = () => {
 
   useEffect(() => {
     if (category) {
+      setLoading(true);
+      setQuestions([]);
+      setCurrentQuestionIndex(0);
+      setCorrectAnswers(0);
+      setSelectedAnswer(null);
+      setIsQuizCompleted(false);
       fetchQuestions();
     }
-  }, [difficulty, category]);
+  }, [category, difficulty]);
 
   const fetchQuestions = async () => {
     try {

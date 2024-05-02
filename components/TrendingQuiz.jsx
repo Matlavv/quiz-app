@@ -6,7 +6,11 @@ const TrendingQuiz = () => {
   const navigation = useNavigation();
 
   const navigateToQuiz = (category) => {
-    navigation.navigate("quizCategory", { category });
+    navigation.navigate("quizCategory", {
+      category,
+      key: new Date().getTime(),
+    });
+    console.log("Navigating to quiz with category:", category);
   };
 
   return (
