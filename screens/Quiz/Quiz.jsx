@@ -1,3 +1,4 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
@@ -123,30 +124,54 @@ const Quiz = () => {
     : [];
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <Header />
-      <Text className="text-2xl font-bold mb-2">{`Quiz: ${currentQuestion.category}`}</Text>
-      <Text className="text-lg mb-2">{currentQuestion.question}</Text>
-      <Progress.Bar progress={progress} width={200} color="#4ECDC4" />
-      {answers.map((answer, idx) => (
-        <TouchableOpacity
-          key={idx}
-          onPress={() => handleAnswer(answer)}
-          style={{
-            backgroundColor:
-              selectedAnswer === answer
-                ? answer === currentQuestion.correct_answer
-                  ? "green"
-                  : "red"
-                : "#B8C0FF",
-            padding: 12,
-            borderRadius: 4,
-            marginVertical: 4,
-          }}
-        >
-          <Text style={{ color: "white" }}>{answer}</Text>
-        </TouchableOpacity>
-      ))}
+    <View className="flex-1">
+      <View className="bg-secondary-purple pb-6">
+        <Header />
+        <View className="p-4">
+          <Text className="text-2xl mb-2">{`Thème : ${currentQuestion.category}`}</Text>
+          <Text className="text-lg font-semibold mb-2">
+            {currentQuestion.question}
+          </Text>
+          <Progress.Bar progress={progress} width={350} color="#B8C0FF" />
+          <Text className="text-lg font-bold mb-4">
+            Bonnes réponses: {correctAnswers}/{questions.length}
+          </Text>
+        </View>
+      </View>
+      <View className="">
+        <View className="mt-10">
+          {answers.map((answer, idx) => (
+            <TouchableOpacity
+              key={idx}
+              onPress={() => handleAnswer(answer)}
+              className="flex-row items-center bg-blue-500 rounded-xl p-4 m-2"
+              style={{
+                backgroundColor:
+                  selectedAnswer === answer
+                    ? answer === currentQuestion.correct_answer
+                      ? "green"
+                      : "red"
+                    : "#B8C0FF",
+              }}
+            >
+              <Text className="flex-1 text-white font-semibold">{answer}</Text>
+              {selectedAnswer && (
+                <MaterialIcons
+                  name={
+                    answer === currentQuestion.correct_answer
+                      ? "check"
+                      : selectedAnswer === answer
+                      ? "close"
+                      : null
+                  }
+                  size={24}
+                  color="white"
+                />
+              )}
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
     </View>
   );
 };
