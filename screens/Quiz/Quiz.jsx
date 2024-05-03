@@ -144,7 +144,7 @@ const Quiz = () => {
             <TouchableOpacity
               key={idx}
               onPress={() => handleAnswer(answer)}
-              className="flex-row items-center bg-blue-500 rounded-xl p-4 m-2"
+              className="flex-row items-center bg-primary-blue rounded-xl p-4 m-2"
               style={{
                 backgroundColor:
                   selectedAnswer === answer

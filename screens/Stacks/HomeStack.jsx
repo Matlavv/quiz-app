@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../HomeScreen";
+import InfiniteQuiz from "../Quiz/InfiniteQuiz";
 import Quiz from "../Quiz/Quiz";
-import RandomQuiz from "../Quiz/RandomQuiz";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +14,8 @@ const HomeStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="randomQuiz"
-        component={RandomQuiz}
+        name="infiniteQuiz"
+        component={InfiniteQuiz}
         options={{ headerShown: false }}
       />
       <Stack.Screen
